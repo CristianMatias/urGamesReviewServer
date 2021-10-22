@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/v1")
-public class MockController {
+public class Controller {
 
     @GetMapping
     public ResponseEntity<String> start() {
