@@ -1,2 +1,10 @@
-package com.gamesreview.server.dto.custom;public class UserLoginCustomDTO {
+package com.gamesreview.server.dto.custom;
+
+import lombok.Data;
+
+@Data
+public class UserLoginCustomDTO {
+    private String nickname;
+    private String email;
+    private String token;
 }

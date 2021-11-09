@@ -1,2 +1,35 @@
-package com.gamesreview.server.model.user;public class User {
+package com.gamesreview.server.model.user;
+
+import lombok.Data;
+
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.List;
+
+@Data
+@Entity
+@Table(name = "user")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @Column(name = "nickname", nullable = false, unique = true)
+    private String nickname;
+
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+
+    @Column(name = "password", nullable = false, unique = true)
+    private String password;
+
+    @Column(name = "registerDate", nullable = false)
+    private LocalDate registerDate = LocalDate.now();
+
+    @OneToMany
+    private List<User> following;
+
+    //TODO añadir foto de usuario
+    //TODO añadir lista de juegos y de review
 }
