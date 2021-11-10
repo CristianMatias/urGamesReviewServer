@@ -1,6 +1,7 @@
 package com.gamesreview.server.util;
 
 import com.gamesreview.server.dto.custom.UserLoginCustomDTO;
+import com.gamesreview.server.dto.custom.UserSingUpCustomDTO;
 import com.gamesreview.server.dto.user.UserDTO;
 import com.gamesreview.server.model.user.User;
 import org.modelmapper.ModelMapper;
@@ -19,5 +20,9 @@ public class UserHelper {
 
     public UserLoginCustomDTO pojo2login(User wantedUser) {
         return new ModelMapper().map(wantedUser, UserLoginCustomDTO.class);
+    }
+
+    public User dto2pojo(UserSingUpCustomDTO dto){
+        return new ModelMapper().map(dto, User.class);
     }
 }

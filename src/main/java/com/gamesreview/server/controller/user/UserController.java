@@ -1,5 +1,6 @@
 package com.gamesreview.server.controller.user;
 
+import com.gamesreview.server.dto.custom.UserSingUpCustomDTO;
 import com.gamesreview.server.dto.user.UserDTO;
 import com.gamesreview.server.exception.CustomException;
 import com.gamesreview.server.service.user.UserService;
@@ -25,10 +26,19 @@ public class UserController{
         return responseHelper.sendCorrect(userService.getAllUsers());
     }
 
-    @PostMapping("/login")
+    @PostMapping ("/login")
     ResponseEntity<?> login(@RequestParam("user") String user, @RequestParam("pwd") String pwd){
         try {
             return responseHelper.sendCorrect(userService.login(user, pwd));
+        }catch (CustomException ce){
+            return responseHelper.sendError(ce.getMessage());
+        }
+    }
+
+    @PostMapping("/signup")
+    ResponseEntity<?> signup(@RequestBody UserSingUpCustomDTO dto){
+        try {
+            return responseHelper.sendCorrect(userService.signup(dto));
         }catch (CustomException ce){
             return responseHelper.sendError(ce.getMessage());
         }
