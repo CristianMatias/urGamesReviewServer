@@ -9,4 +9,5 @@ public class UserLoginCustomDTO {
     private String nickname;
     private String email;
     private List<UserLoginCustomDTO> following;
+    private Integer totalFollowing;
 }
