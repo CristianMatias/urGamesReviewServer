@@ -1,7 +1,6 @@
 package com.gamesreview.server.dto.custom;
 
 import lombok.Data;
-
 import java.util.List;
 
 @Data

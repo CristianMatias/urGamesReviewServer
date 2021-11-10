@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll().stream().map(u -> userHelper.pojo2dto(u)).collect(Collectors.toList());
     }
 
-    @Override
+  @Override
     public UserLoginCustomDTO login(String user, String pwd) throws CustomException {
         Optional<User> wantedUser = userRepository.findByNickname(user);
         if(wantedUser.isPresent()){
