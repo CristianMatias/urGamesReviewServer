@@ -43,4 +43,9 @@ public class UserController{
             return responseHelper.sendError(ce.getMessage());
         }
     }
+
+    @PostMapping("/{user}/follow/{account}")
+    ResponseEntity<?> follow(@PathVariable String user, @PathVariable String account){
+        return responseHelper.sendCorrect(userService.follow(user, account));
+    }
 }
