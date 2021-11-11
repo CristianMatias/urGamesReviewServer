@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -32,4 +33,9 @@ public class User {
 
     //TODO añadir foto de usuario
     //TODO añadir lista de juegos y de review
+
+    public void addFollowing(User u){
+        if(following == null) following = new ArrayList<>();
+        following.add(u);
+    }
 }

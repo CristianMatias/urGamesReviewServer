@@ -12,4 +12,5 @@ public interface UserService {
     List<UserDTO> getAllUsers();
     UserLoginCustomDTO login(String user, String pwd) throws CustomException;
     UserDTO signup(UserSingUpCustomDTO dto) throws CustomException;
+    Boolean follow(String user, String account);
 }

@@ -53,4 +53,16 @@ public class UserServiceImpl implements UserService {
         }
 
     }
+
+    @Override
+    public Boolean follow(String userNickname, String accountNickname) {
+        Optional<User> u = userRepository.findByNickname(userNickname);
+        Optional<User> a = userRepository.findByNickname(accountNickname);
+        u.ifPresent(user -> a.ifPresent(account -> {
+            user.addFollowing(account);
+            userRepository.save(user);
+        }));
+
+        return false;
+    }
 }
