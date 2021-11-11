@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -21,7 +22,7 @@ public class User {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "password", nullable = false, unique = true)
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "registerDate", nullable = false)
@@ -32,4 +33,9 @@ public class User {
 
     //TODO añadir foto de usuario
     //TODO añadir lista de juegos y de review
+
+    public void addFollowing(User u){
+        if(following == null) following = new ArrayList<>();
+        following.add(u);
+    }
 }

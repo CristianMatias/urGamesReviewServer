@@ -1,6 +1,0 @@
-DROP TABLE IF EXISTS mock;
-
-CREATE TABLE billionaires (
-  id INT AUTO_INCREMENT  PRIMARY KEY,
-  example VARCHAR(250) NOT NULL
-);

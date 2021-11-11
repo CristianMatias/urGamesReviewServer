@@ -1,5 +1,7 @@
 package com.gamesreview.server.util;
 
+import com.gamesreview.server.dto.custom.UserLoginCustomDTO;
+import com.gamesreview.server.dto.custom.UserSingUpCustomDTO;
 import com.gamesreview.server.dto.user.UserDTO;
 import com.gamesreview.server.model.user.User;
 import org.modelmapper.ModelMapper;
@@ -16,8 +18,17 @@ public class UserHelper {
         return dto;
     }
 
-    public User dto2pojo(UserDTO dto){
-        return new ModelMapper().map(dto, User.class);
+    public UserLoginCustomDTO pojo2login(User wantedUser) {
+        UserLoginCustomDTO dto = new ModelMapper().map(wantedUser, UserLoginCustomDTO.class);
+        dto.setTotalFollowing(wantedUser.getFollowing().size());
+        return dto;
     }
 
+    /**
+     * @param dto must be UserSignUpCustomDTO or UserDTO
+     */
+    public <E> User dto2pojo(E dto){
+        assert (dto instanceof UserSingUpCustomDTO) || (dto instanceof UserDTO);
+        return new ModelMapper().map(dto, User.class);
+    }
 }
