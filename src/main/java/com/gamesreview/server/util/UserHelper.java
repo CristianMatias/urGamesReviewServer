@@ -19,16 +19,15 @@ public class UserHelper {
     }
 
     public UserLoginCustomDTO pojo2login(User wantedUser) {
-        UserLoginCustomDTO dto = new ModelMapper().map(wantedUser, UserLoginCustomDTO.class);
-        dto.setTotalFollowing(wantedUser.getFollowing().size());
-        return dto;
+        return new ModelMapper().map(wantedUser, UserLoginCustomDTO.class);
     }
 
     /**
      * @param dto must be UserSignUpCustomDTO or UserDTO
      */
     public <E> User dto2pojo(E dto){
-        assert (dto instanceof UserSingUpCustomDTO) || (dto instanceof UserDTO);
-        return new ModelMapper().map(dto, User.class);
+        if(dto instanceof UserSingUpCustomDTO || dto instanceof UserDTO)
+            return new ModelMapper().map(dto, User.class);
+        return null;
     }
 }

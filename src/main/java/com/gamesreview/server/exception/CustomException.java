@@ -3,7 +3,7 @@ package com.gamesreview.server.exception;
 import lombok.Getter;
 
 public class CustomException extends Exception {
-    @Getter private String message;
+    @Getter private final String message;
 
     public CustomException(Exception ex){
         super(ex);

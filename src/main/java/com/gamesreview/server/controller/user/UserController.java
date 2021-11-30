@@ -22,12 +22,12 @@ public class UserController{
     private ResponseHelper responseHelper;
 
     @GetMapping("/users")
-    ResponseEntity<List<UserDTO>> getAllUsers(){
+    public ResponseEntity<List<UserDTO>> getAllUsers(){
         return responseHelper.sendCorrect(userService.getAllUsers());
     }
 
     @PostMapping ("/login")
-    ResponseEntity<?> login(@RequestParam("user") String user, @RequestParam("pwd") String pwd){
+    public ResponseEntity<?> login(@RequestParam("user") String user, @RequestParam("pwd") String pwd){
         try {
             return responseHelper.sendCorrect(userService.login(user, pwd));
         }catch (CustomException ce){
@@ -36,7 +36,7 @@ public class UserController{
     }
 
     @PostMapping("/signup")
-    ResponseEntity<?> signup(@RequestBody UserSingUpCustomDTO dto){
+    public ResponseEntity<?> signup(@RequestBody UserSingUpCustomDTO dto){
         try {
             return responseHelper.sendCorrect(userService.signup(dto));
         }catch (CustomException ce){
@@ -45,7 +45,7 @@ public class UserController{
     }
 
     @PostMapping("/{user}/follow/{account}")
-    ResponseEntity<?> follow(@PathVariable String user, @PathVariable String account){
+    public ResponseEntity<?> follow(@PathVariable String user, @PathVariable String account){
         return responseHelper.sendCorrect(userService.follow(user, account));
     }
 }

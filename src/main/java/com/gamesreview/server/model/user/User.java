@@ -29,6 +29,7 @@ public class User {
     private LocalDate registerDate = LocalDate.now();
 
     @OneToMany
+    @ElementCollection(fetch = FetchType.LAZY)
     private List<User> following;
 
     //TODO añadir foto de usuario
